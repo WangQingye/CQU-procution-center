@@ -5,7 +5,7 @@
       <div class="background-bottom"></div>
     </div>
     <Header />
-    <router-view></router-view> 
+    <router-view></router-view>
     <Footer />
   </div>
 </template>
@@ -18,7 +18,7 @@ export default {
   name: 'Main',
   components: {
     Header,
-    Footer
+    Footer,
   },
 }
 </script>
@@ -28,7 +28,7 @@ export default {
   // height: 100vh;
   width: 100%;
   min-width: 1200px;
-  height: 100%;
+  height: auto;
   .background {
     position: absolute;
     top: 0;
@@ -42,7 +42,7 @@ export default {
     }
     .background-bottom {
       height: calc(100% - 390px);
-      background-color: black;
+      background-color: #fbfbfa;
     }
   }
 }

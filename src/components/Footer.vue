@@ -19,11 +19,10 @@ export default {
   width: 72%;
   font-size: 14px;
   height: 60px;
-  position: absolute;
-  left: 0;
-  bottom: 0;
+  margin: 0 auto;
   color: #999999;
   .content {
+    line-height: 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
