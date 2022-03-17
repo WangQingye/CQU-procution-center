@@ -1,5 +1,5 @@
 <template>
-  <div class=''>
+  <div class='models'>
     <p>模型库</p>
   </div>
 </template>
@@ -14,4 +14,7 @@ export default {
 }
 </script>
 <style scoped lang='scss'>
+.models {
+  min-height: calc(100vh - 121px);
+}
 </style>

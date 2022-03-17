@@ -16,12 +16,15 @@ export default {
 </script>
 <style scoped lang='scss'>
 .footer {
-  width: 72%;
+  width: 100%;
   font-size: 14px;
   height: 60px;
   margin: 0 auto;
+  background: white;
   color: #999999;
   .content {
+    width: 76%;
+    margin: 0 auto;
     line-height: 60px;
     display: flex;
     justify-content: space-between;

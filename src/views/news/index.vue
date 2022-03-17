@@ -1,5 +1,5 @@
 <template>
-  <div class=''>
+  <div class='news'>
     <p>中心新闻</p>
   </div>
 </template>
@@ -14,4 +14,7 @@ export default {
 }
 </script>
 <style scoped lang='scss'>
+.news {
+  min-height: calc(100vh - 121px);
+}
 </style>

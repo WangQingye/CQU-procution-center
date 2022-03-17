@@ -1,9 +1,5 @@
 <template>
   <div class="main">
-    <div class="background">
-      <div class="background-top"></div>
-      <div class="background-bottom"></div>
-    </div>
     <Header />
     <router-view></router-view>
     <Footer />
@@ -25,25 +21,16 @@ export default {
 
 <style lang="scss" scoped>
 .main {
-  // height: 100vh;
   width: 100%;
   min-width: 1200px;
+
+  // 纯色
+  // background: linear-gradient(to bottom, $--color-primary 390px, #fbfbfa 390px);
+
+  // 图片
+  background: url(../assets/imgs/sucaibg.jpg) left top no-repeat, #fbfbfa right bottom repeat;
+
+  background-size: 100%, 390px, auto;
   height: auto;
-  .background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: -1;
-    .background-top {
-      height: 390px;
-      background-color: $--color-primary;
-    }
-    .background-bottom {
-      height: calc(100% - 390px);
-      background-color: #fbfbfa;
-    }
-  }
 }
 </style>
