@@ -2,7 +2,8 @@
   <div class='prodution-services'>
     <BigTitle cn-text="预约制造"
       en-text="PRODUCTION SERVICES" />
-    <div class="content">
+    <div class="content"
+      :style="{marginBottom: showUpload? '100px' : '200px'}">
       <div class="step-1">
         <p class="title">
           <img class="title-img"
@@ -40,7 +41,8 @@
         </div>
         <Uploader v-show="showUpload"
           @submitFiles="submitFiles" />
-        <FilesTable @backToUpload="showUpload = true" v-show="!showUpload" />
+        <FilesTable @backToUpload="showUpload = true"
+          v-show="!showUpload" />
       </div>
     </div>
     <CommonDialog :visible.sync="showVideo"
@@ -143,7 +145,7 @@ export default {
     // height: 750px;
     margin: 0 auto;
     margin-top: 40px;
-    margin-bottom: 200px;
+    // margin-bottom: 200px;
     background: #fff;
     border-radius: 10px;
     padding: 30px 45px;
