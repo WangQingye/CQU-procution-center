@@ -28,7 +28,8 @@ export default {
   // background: linear-gradient(to bottom, $--color-primary 390px, #fbfbfa 390px);
 
   // 图片
-  background: url(../assets/imgs/sucaibg.jpg) left top no-repeat, #fbfbfa right bottom repeat;
+  background: url(../assets/imgs/sucaibg.jpg) left top no-repeat,
+    #fbfbfa right bottom repeat;
 
   background-size: 100%, 390px, auto;
   height: auto;

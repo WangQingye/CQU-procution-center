@@ -1,77 +1,43 @@
 <template>
   <div class="files-table">
-    <el-table class="table"
-      ref="multipleTable"
-      :data="tableData"
-      tooltip-effect="dark"
-      height="482"
-      align="left"
-      header-align="left"
-      style="width: 100%">
-      <el-table-column type="selection"
-        width="25">
+    <el-table class="table" ref="multipleTable" :data="tableData" tooltip-effect="dark" height="482" align="left" header-align="left" style="width: 100%">
+      <el-table-column type="selection" width="25">
       </el-table-column>
-      <el-table-column type="index"
-        align="center"
-        header-align="left"
-        width="90"
-        label="全选">
+      <el-table-column type="index" align="center" header-align="left" width="90" label="全选">
       </el-table-column>
-      <el-table-column label="预览"
-        min-width="120">
+      <el-table-column label="预览" min-width="120">
         <template slot-scope="scope">
-          <img class="file-img"
-            :src="scope.row.img"
-            alt="logo">
+          <img class="file-img" :src="scope.row.img" alt="logo">
         </template>
       </el-table-column>
-      <el-table-column prop="name"
-        label="附件信息"
-        min-width="220">
+      <el-table-column prop="name" label="附件信息" min-width="220">
         <template slot-scope="scope">
           <p class="file-info-text">附件名：{{scope.row.name}}</p>
-          <p class="file-info-text"
-            v-if="scope.row.length">尺寸：{{`${scope.row.length} × ${scope.row.width} × ${scope.row.height}`}}mm</p>
-          <p class="file-info-text"
-            v-if="scope.row.volumn">体积：{{scope.row.volumn}}</p>
-          <p class="file-info-text"
-            v-if="scope.row.surface">表面积：{{scope.row.surface}}</p>
-          <el-tag class="file-info-tag"
-            type="info"
-            @click="editSize"
-            v-if="!scope.row.length">无法识别请编辑尺寸</el-tag>
+          <p class="file-info-text" v-if="scope.row.length">尺寸：{{`${scope.row.length} × ${scope.row.width} × ${scope.row.height}`}}mm</p>
+          <p class="file-info-text" v-if="scope.row.volumn">体积：{{scope.row.volumn}}</p>
+          <p class="file-info-text" v-if="scope.row.surface">表面积：{{scope.row.surface}}</p>
+          <el-tag class="file-info-tag" type="info" @click="editSize" v-if="!scope.row.length">无法识别请编辑尺寸</el-tag>
         </template>
       </el-table-column>
-      <el-table-column prop="address"
-        min-width="220"
-        label="加工参数">
+      <el-table-column prop="address" min-width="220" label="加工参数">
         <template slot-scope="scope">
-          <el-tag type="info"
-            @click="editParam">
-            <div v-if="scope.row.material"
-              class="file-param-text-wrapper">
+          <el-tag type="info" @click="editParam">
+            <div v-if="scope.row.material" class="file-param-text-wrapper">
               <p class="file-param-text">材料：{{scope.row.material}}</p>
               <p class="file-param-text">颜色：{{scope.row.color}}</p>
               <p class="file-param-text">填充：{{scope.row.padding}}</p>
               <p class="file-param-text">后处理：{{scope.row.dispose}}</p>
             </div>
-            <p v-else
-              class="file-param-text-wrapper">点击选择加工参数</p>
+            <p v-else class="file-param-text-wrapper">点击选择加工参数</p>
           </el-tag>
         </template>
       </el-table-column>
-      <el-table-column prop="address"
-        min-width="120"
-        label="数量（件）">
+      <el-table-column prop="address" min-width="120" label="数量（件）">
         <template slot-scope="scope">
-          <el-input-number size="small"
-            :min="0"
-            v-model="scope.row.number"></el-input-number>
+          <el-input-number size="small" :min="0" v-model="scope.row.number"></el-input-number>
         </template>
       </el-table-column>
-      <el-table-column prop="address"
-        min-width="160"
-        label="预估费用（预估）">
+      <el-table-column prop="address" min-width="160" label="预估费用（预估）">
         <template slot-scope="scope">
           <p v-if="!scope.row.material">请确认加工参数</p>
           <p v-else-if="!scope.row.length">请确认尺寸</p>
@@ -80,9 +46,7 @@
       </el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
-          <el-dropdown trigger="click"
-            placement="bottom"
-            @command="handleCommand($event, scope.row)">
+          <el-dropdown trigger="click" placement="bottom" @command="handleCommand($event, scope.row)">
             <span class="el-dropdown-link">
               <i class="el-icon-more"></i>
             </span>
@@ -101,102 +65,63 @@
       </div>
       <div class="right">
         <el-button class="btn">
-          <img class="btn-img"
-            src="@/assets/imgs/upload.png"
-            alt="logo">
+          <img class="btn-img" src="@/assets/imgs/upload.png" alt="logo">
           <span>继续上传文件</span>
         </el-button>
       </div>
     </div>
     <div class="submit-buttons">
       <el-button class="btn btn-left" @click="backToUpload">取消返回</el-button>
-      <el-button class="btn" @click="handleCommand"
-        type="primary">提交制作审核</el-button>
+      <el-button class="btn" @click="handleCommand" type="primary">提交制作审核</el-button>
     </div>
-    <CommonDialog :visible.sync="showEditSize"
-      width="500px"
-      @submit="submitEditSize"
-      title="附件信息">
+    <CommonDialog :visible.sync="showEditSize" width="500px" @submit="submitEditSize" title="附件信息">
       <div class="edit-size-form">
-        <el-form ref="form"
-          :model="editObj"
-          label-width="80px">
+        <el-form ref="form" :model="editObj" label-width="80px">
           <el-form-item>
             <p slot="label">极限尺寸<span class="required-icon"> *</span></p>
             <el-col :span="6">
-              <el-input type="number"
-                placeholder="长"
-                v-model="editObj.length"></el-input>
+              <el-input type="number" placeholder="长" v-model="editObj.length"></el-input>
             </el-col>
-            <el-col :span="2"
-              class="input-icon">×</el-col>
+            <el-col :span="2" class="input-icon">×</el-col>
             <el-col :span="6">
-              <el-input type="number"
-                placeholder="宽"
-                v-model="editObj.length"></el-input>
+              <el-input type="number" placeholder="宽" v-model="editObj.length"></el-input>
             </el-col>
-            <el-col :span="2"
-              class="input-icon">×</el-col>
+            <el-col :span="2" class="input-icon">×</el-col>
             <el-col :span="6">
-              <el-input type="number"
-                placeholder="高"
-                v-model="editObj.length"></el-input>
+              <el-input type="number" placeholder="高" v-model="editObj.length"></el-input>
             </el-col>
-            <el-col :span="2"
-              class="input-icon">mm</el-col>
+            <el-col :span="2" class="input-icon">mm</el-col>
           </el-form-item>
           <el-form-item>
             <p slot="label">预估体积<span class="required-icon"> *</span></p>
             <el-col :span="14">
-              <el-input type="number"
-                placeholder="预估体积"
-                v-model="editObj.length"></el-input>
+              <el-input type="number" placeholder="预估体积" v-model="editObj.length"></el-input>
             </el-col>
-            <el-col :span="3"
-              class="input-icon">mm³</el-col>
+            <el-col :span="3" class="input-icon">mm³</el-col>
           </el-form-item>
         </el-form>
       </div>
     </CommonDialog>
-    <CommonDialog :visible.sync="showEditParam"
-      width="500px"
-      @submit="submitEditParam"
-      title="附件信息">
+    <CommonDialog :visible.sync="showEditParam" width="500px" @submit="submitEditParam" title="附件信息">
       <div class="edit-size-form">
-        <el-form ref="form"
-          :model="editObj"
-          label-width="80px">
+        <el-form ref="form" :model="editObj" label-width="80px">
           <el-form-item>
             <p slot="label">材料<span class="required-icon"> *</span></p>
-            <el-cascader style="width:100%"
-              v-model="editObj.material"
-              :options="cascaderOptions"></el-cascader>
+            <el-cascader style="width:100%" v-model="editObj.material" :options="cascaderOptions"></el-cascader>
           </el-form-item>
           <el-form-item label="后处理">
-            <el-select style="width:100%"
-              v-model="editObj.color"
-              placeholder="点击选择">
-              <el-option v-for="option in commonOptions"
-                :key="option"
-                :label="option"
-                :value="option">
+            <el-select style="width:100%" v-model="editObj.color" placeholder="点击选择">
+              <el-option v-for="option in commonOptions" :key="option" :label="option" :value="option">
               </el-option>
             </el-select>
           </el-form-item>
           <el-form-item>
             <p slot="label">机器精度<span class="required-icon"> *</span></p>
-            <el-cascader style="width:100%"
-              v-model="editObj.dispose"
-              :options="cascaderOptions"></el-cascader>
+            <el-cascader style="width:100%" v-model="editObj.dispose" :options="cascaderOptions"></el-cascader>
           </el-form-item>
           <el-form-item label="表面效果">
-            <el-select style="width:100%"
-              v-model="editObj.padding"
-              placeholder="点击选择">
-              <el-option v-for="option in commonOptions"
-                :key="option"
-                :label="option"
-                :value="option">
+            <el-select style="width:100%" v-model="editObj.padding" placeholder="点击选择">
+              <el-option v-for="option in commonOptions" :key="option" :label="option" :value="option">
               </el-option>
             </el-select>
           </el-form-item>
@@ -325,7 +250,7 @@ export default {
     },
     backToUpload() {
       this.$emit('backToUpload')
-    }
+    },
   },
 }
 </script>

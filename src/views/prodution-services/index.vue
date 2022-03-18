@@ -1,24 +1,15 @@
 <template>
   <div class='prodution-services'>
-    <BigTitle cn-text="预约制造"
-      en-text="PRODUCTION SERVICES" />
-    <div class="content"
-      :style="{marginBottom: showUpload? '100px' : '200px'}">
+    <BigTitle cn-text="预约制造" en-text="PRODUCTION SERVICES" />
+    <div class="content" :style="{marginBottom: showUpload? '100px' : '200px'}">
       <div class="step-1">
         <p class="title">
-          <img class="title-img"
-            src="@/assets/imgs/title1.png"
-            alt="logo">
+          <img class="title-img" src="@/assets/imgs/title1.png" alt="logo">
           <span>选择加工工艺</span>
         </p>
         <div class="types">
-          <div :class="['type', nowType ===  type.text ? 'selected' : '']"
-            v-for="(type, index) in types"
-            @click="changeType(type)"
-            :key="index">
-            <img class="type-img"
-              :src="type.logo"
-              alt="logo">
+          <div :class="['type', nowType ===  type.text ? 'selected' : '']" v-for="(type, index) in types" @click="changeType(type)" :key="index">
+            <img class="type-img" :src="type.logo" alt="logo">
             <p class="type-text">{{type.text}}</p>
           </div>
         </div>
@@ -26,45 +17,27 @@
       <div class="step-2">
         <div class="title-wrapper">
           <p class="title">
-            <img class="title-img"
-              src="@/assets/imgs/title2.png"
-              alt="logo">
+            <img class="title-img" src="@/assets/imgs/title2.png" alt="logo">
             <span>上传图纸附件</span>
           </p>
-          <el-button class="video"
-            @click="showVideo = true">
-            <img class="video-img"
-              src="@/assets/imgs/video.png"
-              alt="logo">
+          <el-button class="video" @click="showVideo = true">
+            <img class="video-img" src="@/assets/imgs/video.png" alt="logo">
             <span>操作演示</span>
           </el-button>
         </div>
-        <Uploader v-show="showUpload"
-          @submitFiles="submitFiles" />
-        <FilesTable @backToUpload="showUpload = true"
-          v-show="!showUpload" />
+        <Uploader v-show="showUpload" @submitFiles="submitFiles" />
+        <FilesTable @backToUpload="showUpload = true" v-show="!showUpload" />
       </div>
     </div>
-    <CommonDialog :visible.sync="showVideo"
-      width="1000px"
-      :show-btns="false"
-      title="操作演示">
-      <video width="945"
-        height="500"
-        controls>
-        <source src="https://www.runoob.com/try/demo_source/movie.mp4"
-          type="video/mp4">
+    <CommonDialog :visible.sync="showVideo" width="1000px" :show-btns="false" title="操作演示">
+      <video width="945" height="500" controls>
+        <source src="https://www.runoob.com/try/demo_source/movie.mp4" type="video/mp4">
         您的浏览器不支持 HTML5 video 标签。
       </video>
     </CommonDialog>
-    <CommonDialog :visible.sync="showChangeTypeTip"
-      width="500px"
-      @submit="submitChangeType"
-      title="注意事项">
+    <CommonDialog :visible.sync="showChangeTypeTip" width="500px" @submit="submitChangeType" title="注意事项">
       <div class="change-type-tip">
-        <img class="tip-img"
-          src="@/assets/imgs/zhuyi.png"
-          alt="logo">
+        <img class="tip-img" src="@/assets/imgs/zhuyi.png" alt="logo">
         <p class="tip-text">切换工艺后已上传的图纸及填写的信息将不会被保存，
           是否确认需要切换？</p>
       </div>

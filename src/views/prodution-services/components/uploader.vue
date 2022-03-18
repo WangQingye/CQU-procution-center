@@ -1,18 +1,9 @@
 <template>
   <div class='uploader-wrapper'>
     <div class="uploader" v-show="showUpload">
-      <el-upload drag
-        :on-progress="onProgress"
-        :before-upload="beforeUpload"
-        action="https://jsonplaceholder.typicode.com/posts/"
-        accept=".step,.stp,.stl,.ply,.obj,.zip,.rar"
-        :limit="10"
-        :show-file-list="false"
-        multiple>
+      <el-upload drag :on-progress="onProgress" :before-upload="beforeUpload" action="https://jsonplaceholder.typicode.com/posts/" accept=".step,.stp,.stl,.ply,.obj,.zip,.rar" :limit="10" :show-file-list="false" multiple>
         <div class="upload">
-          <img class="upload-img"
-            src="@/assets/imgs/upload.png"
-            alt="logo">
+          <img class="upload-img" src="@/assets/imgs/upload.png" alt="logo">
           <p class="upload-text">拖拽或点击上传文件</p>
           <p class="upload-tip">
             3D预览支持格式：STEP(.step, .stp)，STL(.stl)，PLY(.ply)，OBJ(.obj) ，可上传压缩包（zip、rar）直接上传
@@ -21,20 +12,13 @@
         </div>
       </el-upload>
     </div>
-    <div class="upload-list upload"
-      v-show="!showUpload">
+    <div class="upload-list upload" v-show="!showUpload">
       <ul class="upload-files">
-        <li v-for="(file,index) in uploadFiles"
-          class="upload-file"
-          :key="index">
-          <img class="file-logo"
-            src="@/assets/imgs/zip.png"
-            alt="logo">
+        <li v-for="(file,index) in uploadFiles" class="upload-file" :key="index">
+          <img class="file-logo" src="@/assets/imgs/zip.png" alt="logo">
           <p class="file-name">{{file.name}}</p>
           <p class="file-size">{{(file.size / 1024 / 1024).toFixed(1)}}MB</p>
-          <el-progress class="progress"
-            color="#409EFF"
-            :percentage="50"></el-progress>
+          <el-progress class="progress" color="#409EFF" :percentage="50"></el-progress>
           <p class="file-operation">
             <span>上传中</span>&nbsp;&nbsp;|&nbsp;&nbsp; <span class="del-btn">删除</span>
           </p>
@@ -42,8 +26,7 @@
       </ul>
       <div class="buttons">
         <el-button class="btn" @click="showUpload=true">点击添加上传文件</el-button>
-        <el-button class="btn"
-          type="primary" @click="submitFiles">确认提交</el-button>
+        <el-button class="btn" type="primary" @click="submitFiles">确认提交</el-button>
       </div>
     </div>
   </div>
@@ -61,7 +44,7 @@ export default {
         {
           size: 100000000,
           name: '模拟文件.zip',
-        }
+        },
       ],
       showUpload: true,
     }
@@ -84,7 +67,7 @@ export default {
     },
     submitFiles() {
       this.$emit('submitFiles', this.uploadFiles)
-    }
+    },
   },
 }
 </script>
