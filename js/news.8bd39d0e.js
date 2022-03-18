@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["news"],{"3c8f":function(t,n,e){},"537a":function(t,n,e){"use strict";e("3c8f")},"7c64":function(t,n,e){"use strict";e.r(n);var c=function(){var t=this,n=t.$createElement;t._self._c;return t._m(0)},s=[function(){var t=this,n=t.$createElement,e=t._self._c||n;return e("div",{staticClass:"news"},[e("p",[t._v("中心新闻")])])}],a={data:function(){return{}},methods:{}},r=a,u=(e("537a"),e("2877")),i=Object(u["a"])(r,c,s,!1,null,"1e4783d9",null);n["default"]=i.exports}}]);
+//# sourceMappingURL=news.8bd39d0e.js.map
