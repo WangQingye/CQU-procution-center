@@ -1,24 +1,14 @@
-# production-services
+# 制造服务中心页面
 
-## Project setup
-```
-npm install
-```
+### 简要说明
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+1. 将elementui的主题色通过scss修改，并且在使用主题色的地方都使用了变量，可以通过配置更换主题。
+2. 首页上半部背景色通过css控制，可以配置为颜色，也可以配置为图片。
+3. 页面可以适配到最低1200px像素的屏幕，因为考虑到响应式的原因，部分地方才有百分比宽高，所以不同宽度下可能跟设计图上的尺寸有些微如初。
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### 页面交互
 
-### Lints and fixes files
-```
-npm run lint
-```
+1. 因为暂时不清楚真实产品的交互逻辑，所以设计为上传后跳转到文件列表，提交后再进入编辑的流程。
+2. 因为暂时没有接口数据及相应格式，故数据方面都采用的假数据，主要以展示页面为主，后续调试接口时可以再行调整。
+3. 其他的例如页面头部导航栏暂时只做了简单跳转，后续可以添加内容。
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
