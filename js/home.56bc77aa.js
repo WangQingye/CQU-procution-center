@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["home"],{"41b0":function(t,e,n){"use strict";n("7fca")},"7abe":function(t,e,n){"use strict";n.r(e);var c=function(){var t=this,e=t.$createElement;t._self._c;return t._m(0)},a=[function(){var t=this,e=t.$createElement,n=t._self._c||e;return n("div",{staticClass:"home"},[n("p",[t._v("首页")])])}],s={data:function(){return{}},methods:{}},r=s,u=(n("41b0"),n("2877")),i=Object(u["a"])(r,c,a,!1,null,"7876b9f9",null);e["default"]=i.exports},"7fca":function(t,e,n){}}]);
+//# sourceMappingURL=home.56bc77aa.js.map
